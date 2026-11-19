@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+wandb/
+# Local data, weights and outputs -- never in git
+/pretrained_models
+/datasets
+/outputs/
+/third_party/
+eval_logs/
+rollouts/

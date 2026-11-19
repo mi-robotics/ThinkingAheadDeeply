@@ -1,0 +1,43 @@
+# HVLA, flow-matching decoder (4 untied layers, 10 Euler steps). Same history options as hvla_recurrent.
+# LIBERO-goal. Effective batch 32 (8 x 4 accumulation fits a 24 GB GPU), 50000 steps, lr 5e-5, LoRA r64 on the VLM.
+# Seed and output dir are set by scripts/train.sh (--seed / --out); these values are the defaults.
+action_head:
+  type: hvla_flow
+  recurrent:
+    hidden_dim: 896
+    num_heads: 8
+    prelude_vlm_layers: [11]        # lengths only: 1 prelude, 2 core, 1 coda layer
+    recurrent_vlm_layers: [23, 23]
+    coda_vlm_layers: [23]
+    action_chunk_len: 8
+    action_dim: 7
+    rms_norm_eps: 1.0e-06
+    rope_base: 10000.0
+    flow_num_layers: 4
+    flow_num_inference_steps: 10
+    s1_encoder_layers: 4
+    s1_context_layer: 23
+    s1_vit_model: vit_small_patch14_dinov2.lvd142m
+    s1_vit_pretrained: true
+    s1_num_images: 2
+    s1_s2_refresh_every: 8
+model:
+  use_lora: true
+  lora_rank: 64
+optimizer:
+  learning_rate: 5.0e-05
+data:
+  data_root_dir: datasets/libero
+  dataset_name: libero_goal_no_noops
+  image_aug: true
+  shuffle_buffer_size: 100000
+batch_size: 8
+grad_accumulation_steps: 4
+max_steps: 50000
+save_freq: 10000
+save_latest_only: false
+merge_lora: true
+seed: 42
+use_wandb: false
+run_name: hvla_flow_goal
+output_dir: outputs/libero/hvla_flow/goal/seed42

@@ -1,0 +1,30 @@
+# recurrent_vla dependencies (torch 2.2.0 + CUDA 12.1 installed first). Versions are the ones the equivalence tests
+# and all reported runs used (the `rdvla` conda env on fairfield, 2026-11).
+torch==2.2.0
+torchvision==0.17.0
+transformers @ git+https://github.com/moojink/transformers-openvla-oft.git
+tokenizers==0.19.1
+sentencepiece==0.1.99
+peft==0.11.1
+timm==0.9.10
+accelerate>=0.25.0
+safetensors
+draccus==0.8.0
+pyyaml
+tqdm
+wandb==0.16.6
+numpy<2
+protobuf==3.20.3
+tensorflow==2.15.0
+tensorflow_datasets==4.9.3
+tensorflow-metadata==1.14.0
+dlimp @ git+https://github.com/moojink/dlimp_openvla
+# evaluation (LIBERO itself: see external/install_rdvla.sh)
+opencv-python
+imageio[ffmpeg]
+robosuite==1.4.1
+mujoco==3.1.6
+bddl
+easydict
+cloudpickle
+gym
