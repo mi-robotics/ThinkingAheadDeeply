@@ -18,7 +18,6 @@ recurrent_vla/                  all model, training and evaluation code
   eval/                         LIBERO evaluation
   rectify/                      distillation so 1-2 recurrent iterations reach the converged latent
 scripts/                        train.sh, eval_libero.sh, paired_test.py (McNemar), install.sh
-ablation_eval_protocol.md       how every comparison is run and reported
 ```
 
 ## Setup
